@@ -1222,6 +1222,7 @@ class AzureDLFile(object):
         # TODO Flush may be simplified
         # Buffered writes so a very large buffer is not copied leading to very large memory consumption
         bytes_written = 0
+        data = bytes(data)
         for i in range(0, len(data), self.blocksize):
             out = self.buffer.write(ensure_writable(data[i:i + self.blocksize]))
             self.loc += out
