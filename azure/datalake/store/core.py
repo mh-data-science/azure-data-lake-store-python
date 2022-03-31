@@ -16,6 +16,7 @@ which is compatible with the built-in File.
 
 # standard imports
 import io
+import os
 import logging
 import sys
 import uuid
