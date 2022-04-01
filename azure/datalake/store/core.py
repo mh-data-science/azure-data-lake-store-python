@@ -48,12 +48,7 @@ def fsagnosticglob(fs, path, pathtype, prefix=""):
         for _prefix in paths:
             checkpath = os.path.join(_prefix,part)
             if "*" in part:
-                try:
-                    potentialpaths = fs.ls(_prefix)
-                # A prefix path can possibly not exist. In this way catching the error.
-                except FileNotFoundError:
-                    potentialpaths = []
-
+                potentialpaths = fs.ls(_prefix) if fs.exists(_prefix) else []
                 for p in potentialpaths:
                     if pathtype(p).match(checkpath):
                         newpaths.append(p)
